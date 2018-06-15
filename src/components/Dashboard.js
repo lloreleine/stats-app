@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
-import dashboardActions from '../store/actions';
+import getActions from '../store/actions';
 import getStats from '../store/selectors';
 import { connect } from 'react-redux';
 import '../App.css';
@@ -33,4 +33,4 @@ class Dashboard extends Component {
   }
 }
 
-export default connect(getStats, dashboardActions)(Dashboard);
+export default connect(getStats, getActions)(Dashboard);

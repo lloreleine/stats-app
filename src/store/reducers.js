@@ -7,25 +7,33 @@ let initialState={
 
 export default function dashboardReducer(state=initialState, action){
   switch(action.type){
-    case "SET_STAT_TOP_LABEL":
+    case "SET_STATS_LABELS":
         return{
           ...state,
-          statTopLabel:action.data
+          statTopLabel:action.data.currentTop,
+          statLeftLabel:action.data.currentLeft,
+          statRightLabel:action.data.currentRight,
+          statBottomLabel:action.data.currentBottom
         }
-    case "SET_STAT_LEFT_LABEL":
+    case "SET_STAT_TOP":
         return{
           ...state,
-          statLeftLabel:action.data
+          statTop:action.data
         }
-    case "SET_STAT_RIGHT_LABEL":
+    case "SET_STAT_LEFT":
         return{
           ...state,
-          statRightLabel:action.data
+          statLeft:action.data
         }
-    case "SET_STAT_BOTTOM_LABEL":
+    case "SET_STAT_RIGHT":
         return{
           ...state,
-          statBottomLabel:action.data
+          statRight:action.data
+        }
+    case "SET_STAT_BOTTOM":
+        return{
+          ...state,
+          statBottom:action.data
         }
     default:
       return state;

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from "react-router-dom";
 import dashboardActions from '../store/actions';
 import getStats from '../store/selectors';
 import '../App.css';
@@ -8,22 +9,29 @@ class Config extends Component {
   constructor(props){
     super(props)
     this.state = {
-      currentTop: '',
-      currentLeft: '',
-      currentRight: '',
-      currentBottom: ''
+      configDone: false,
+      currentTop: this.props.statTopLabel,
+      currentLeft: this.props.statLeftLabel,
+      currentRight: this.props.statRightLabel,
+      currentBottom: this.props.statBottomLabel
     }
   }
 
   handleConfig = () => {
-    
+    this.props.setStatsLabels(this.state);
+    this.setState({
+      configDone: true
+    });
   }
 
-  handleInput = (position) => {
-
+  handleInput = (event, position) => {
+    this.setState({
+      [`current${position}`]: event.target.value
+    })
   }
 
   render() {
+    const { currentTop, currentLeft, currentRight, currentBottom, configDone } = this.state;
     return (
       <div className="mobile-container">
         Config
@@ -31,22 +39,24 @@ class Config extends Component {
           <form onSubmit={this.handleConfig}>
             <div>
               <label>On Top: </label>
-              <input type="text" value={this.currentTop} onChange={() => this.handleInput('top')} placeholder={this.props.statTopLabel} />
+              <input type="text" value={currentTop} onChange={(event, position) => { this.handleInput(event, 'Top') }} />
             </div>
             <div>
               <label>On Left: </label>
-              <input type="text" value={this.currentLeft} onChange={() => this.handleInput('left')} placeholder={this.props.statLeftLabel} />
+              <input type="text" value={currentLeft} onChange={(event, position) => { this.handleInput(event, 'Left') }} />
             </div>
             <div>
               <label>On Right: </label>
-              <input type="text" value={this.currentRight} onChange={() => this.handleInput('right')} placeholder={this.props.statRightLabel} />
+              <input type="text" value={currentRight} onChange={(event, position) => { this.handleInput(event, 'Right') }} />
             </div>
             <div>
               <label>On Bottom: </label>
-              <input type="text" value={this.currentBottom} onChange={() => this.handleInput('bottom')} placeholder={this.props.statBottomLabel} />
+              <input type="text" value={currentBottom} onChange={(event, position) => { this.handleInput(event, 'Bottom') }} />
             </div>
+            <button>OK</button>
           </form>
         </div>
+        {configDone && <Redirect to='/dashboard' />}
       </div>
     );
   }
