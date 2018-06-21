@@ -1,8 +1,9 @@
 let initialState={
-  statTopLabel: ' _ ',
-  statLeftLabel: ' _ ',
-  statRightLabel: ' _ ',
-  statBottomLabel: ' _ ',
+  userid: 'cb438731-126b-47ce-9599-18b7c6386a8c',
+  statTopLabel: '',
+  statLeftLabel: '',
+  statRightLabel: '',
+  statBottomLabel: '',
 };
 
 export default function dashboardReducer(state=initialState, action){
@@ -14,26 +15,6 @@ export default function dashboardReducer(state=initialState, action){
           statLeftLabel:action.data.currentLeft,
           statRightLabel:action.data.currentRight,
           statBottomLabel:action.data.currentBottom
-        }
-    case "SET_STAT_TOP":
-        return{
-          ...state,
-          statTop:action.data
-        }
-    case "SET_STAT_LEFT":
-        return{
-          ...state,
-          statLeft:action.data
-        }
-    case "SET_STAT_RIGHT":
-        return{
-          ...state,
-          statRight:action.data
-        }
-    case "SET_STAT_BOTTOM":
-        return{
-          ...state,
-          statBottom:action.data
         }
     default:
       return state;

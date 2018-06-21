@@ -15,6 +15,21 @@
   background-color: white;
 }
 
+.settings {
+  font-style: italic;
+  font-size: 13px;
+  align-self: flex-end;
+  margin: 15px 15px 0 0;
+  padding: 3px;
+  border-radius: 25px;
+  box-shadow: 0 0 6px grey;
+}
+
+.counters {
+  margin-top: -15px;
+  margin-bottom: 30px;
+}
+
 .dash-line-middle {
   display: flex;
   align-items: center;
@@ -32,32 +47,9 @@
 }
 
 .arrow {
-  width: 0px;
-  height: 0px;
-}
-
-.arrow-up {
-  border-right: 60px solid transparent;
-  border-left: 60px solid transparent;
-  border-bottom: 60px solid papayawhip;
-}
-
-.arrow-left {
-  border-right: 60px solid papayawhip;
-  border-bottom: 60px solid transparent;
-  border-top: 60px solid transparent;
-}
-
-.arrow-right {
-  border-left: 60px solid papayawhip;
-  border-bottom: 60px solid transparent;
-  border-top: 60px solid transparent;
-}
-
-.arrow-down {
-  border-right: 60px solid transparent;
-  border-left: 60px solid transparent;
-  border-top: 60px solid papayawhip;
+  font-size: 40px;
+  color: papayawhip;
+  cursor: pointer;
 }
 
 .circle {
@@ -68,7 +60,29 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 20px;
+  margin: 15px;
   color: grey;
   font-style: italic;
+  cursor: pointer;
+}
+
+.empty-label {
+  color: grey;
+  font-style: italic;
+}
+
+.label-rotate-left {
+  transform: rotateZ(-90deg);
+}
+
+.label-rotate-right {
+  transform: rotateZ(90deg);
+}
+
+/* Feedbacks */
+
+.feedback_baseline {
+  font-size: 16px;
+  color: #363636;
+  margin-bottom: 15px;
 }
