@@ -17,6 +17,9 @@ export default function getActions(dispatch){
           })
         })
         .then(response => response.json())
+        .catch(error => {
+          console.warn(error);
+        });
     }
   }
 }
